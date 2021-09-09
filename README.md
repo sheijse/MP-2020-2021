@@ -19,7 +19,7 @@ The 'test header byte values' contains a 'main.cpp' file used to test the genera
 beware: Bytes visible in the output are mirrored.  
 
 The info directory contains:
-- pdf of submitted thesis
+- pdf of submitted thesis and defense presentation
 - txt files with used linux commands
 
 usefull urls:
