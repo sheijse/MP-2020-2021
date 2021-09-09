@@ -25,8 +25,9 @@ The info directory contains:
 most updated version of the thesis    
 https://www.overleaf.com/read/jdxcrsqmmzzx  
 
-usefull links regarding opentap  
+usefull links regarding opentap & openwifi  
 https://doc.opentap.io/Developer%20Guide/Introduction/    
 https://gitlab.com/OpenTAP/Plugins/university-of-malaga/uma-android  
-https://gitlab.com/OpenTAP/Plugins/keysight/sshsteps/-/blob/master/OpenTap.Plugins.Ssh/SshCommandStep.cs  
+https://gitlab.com/OpenTAP/Plugins/keysight/sshsteps/-/blob/master/OpenTap.Plugins.Ssh/SshCommandStep.cs 
+https://github.com/open-sdr/openwifi
 
