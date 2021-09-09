@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestPlan type="OpenTap.TestPlan" Locked="false">
+  <Steps>
+    <TestStep type="OpenTap.Plugins.BasicSteps.SequenceStep" Version="9.15.1+b41dd9c7" Id="79641591-7a6a-4cc3-9e84-1746a740ff7b">
+      <Enabled>true</Enabled>
+      <Name>log adb parameters</Name>
+      <ChildTestSteps>
+        <TestStep type="Tap.Plugins.UMA.Android.Steps.AdbCommandStep" Version="1.0.0" Id="d02c2a97-6a34-46b4-af0c-7022928fb7d9">
+          <Command>Custom</Command>
+          <DeviceId />
+          <Arguments>shell dumpsys connectivity</Arguments>
+          <LocalFile />
+          <RemoteFile />
+          <AdbInstallOptions>ReplaceExistingApplication, AllowVersionCodeDowngrade</AdbInstallOptions>
+          <Package />
+          <Retries>3</Retries>
+          <RetryWaitMillis>5000</RetryWaitMillis>
+          <TimeoutMillis>30000</TimeoutMillis>
+          <Adb Source="OpenTap.InstrumentSettings">ADB</Adb>
+          <Enabled>true</Enabled>
+          <Name>adb shell dumpsys connectivity</Name>
+          <ChildTestSteps />
+          <BreakConditions>Inherit</BreakConditions>
+        </TestStep>
+        <TestStep type="Tap.Plugins.UMA.Android.Steps.AdbCommandStep" Version="1.0.0" Id="58884891-7485-4016-8d57-77ce7d63c9d2">
+          <Command>Custom</Command>
+          <DeviceId />
+          <Arguments>shell ip addr show wlan0</Arguments>
+          <LocalFile />
+          <RemoteFile />
+          <AdbInstallOptions>ReplaceExistingApplication, AllowVersionCodeDowngrade</AdbInstallOptions>
+          <Package />
+          <Retries>3</Retries>
+          <RetryWaitMillis>5000</RetryWaitMillis>
+          <TimeoutMillis>30000</TimeoutMillis>
+          <Adb Source="OpenTap.InstrumentSettings">ADB</Adb>
+          <Enabled>true</Enabled>
+          <Name>adb shell ip addr show wlan0</Name>
+          <ChildTestSteps />
+          <BreakConditions>Inherit</BreakConditions>
+        </TestStep>
+        <TestStep type="Tap.Plugins.UMA.Android.Steps.AdbCommandStep" Version="1.0.0" Id="f32de5bf-50f3-4433-b5ee-b460c147e64d">
+          <Command>Custom</Command>
+          <DeviceId />
+          <Arguments>shell ifconfig wlan0</Arguments>
+          <LocalFile />
+          <RemoteFile />
+          <AdbInstallOptions>ReplaceExistingApplication, AllowVersionCodeDowngrade</AdbInstallOptions>
+          <Package />
+          <Retries>3</Retries>
+          <RetryWaitMillis>5000</RetryWaitMillis>
+          <TimeoutMillis>30000</TimeoutMillis>
+          <Adb Source="OpenTap.InstrumentSettings">ADB</Adb>
+          <Enabled>true</Enabled>
+          <Name>adb shell ifconfig wlan0</Name>
+          <ChildTestSteps />
+          <BreakConditions>Inherit</BreakConditions>
+        </TestStep>
+        <TestStep type="Tap.Plugins.UMA.Android.Steps.AdbCommandStep" Version="1.0.0" Id="d4e6aa29-9269-495d-b965-b99cb376f873">
+          <Command>Custom</Command>
+          <DeviceId />
+          <Arguments>shell ping -c10 www.google.com</Arguments>
+          <LocalFile />
+          <RemoteFile />
+          <AdbInstallOptions>ReplaceExistingApplication, AllowVersionCodeDowngrade</AdbInstallOptions>
+          <Package />
+          <Retries>3</Retries>
+          <RetryWaitMillis>5000</RetryWaitMillis>
+          <TimeoutMillis>30000</TimeoutMillis>
+          <Adb Source="OpenTap.InstrumentSettings">ADB</Adb>
+          <Enabled>false</Enabled>
+          <Name>adb shell ping -c10 www.google.com</Name>
+          <ChildTestSteps />
+          <BreakConditions>Inherit</BreakConditions>
+        </TestStep>
+        <TestStep type="Tap.Plugins.UMA.Android.Steps.AdbCommandStep" Version="1.0.0" Id="13019cf7-4bb0-4e8e-bc36-0fb82f77a01f">
+          <Command>Custom</Command>
+          <DeviceId />
+          <Arguments>shell ping -c10 192.168.13.1</Arguments>
+          <LocalFile />
+          <RemoteFile />
+          <AdbInstallOptions>ReplaceExistingApplication, AllowVersionCodeDowngrade</AdbInstallOptions>
+          <Package />
+          <Retries>2</Retries>
+          <RetryWaitMillis>3000</RetryWaitMillis>
+          <TimeoutMillis>30000</TimeoutMillis>
+          <Adb Source="OpenTap.InstrumentSettings">ADB</Adb>
+          <Enabled>true</Enabled>
+          <Name>adb shell ping -c10 192.168.13.1</Name>
+          <ChildTestSteps />
+          <BreakConditions>Inherit</BreakConditions>
+        </TestStep>
+        <TestStep type="Tap.Plugins.UMA.Android.Steps.AdbCommandStep" Version="1.0.0" Id="062ac893-48fa-4316-9e64-620ab1315dd8">
+          <Command>Custom</Command>
+          <DeviceId />
+          <Arguments>shell dumpsys wifi</Arguments>
+          <LocalFile />
+          <RemoteFile />
+          <AdbInstallOptions>ReplaceExistingApplication, AllowVersionCodeDowngrade</AdbInstallOptions>
+          <Package />
+          <Retries>3</Retries>
+          <RetryWaitMillis>5000</RetryWaitMillis>
+          <TimeoutMillis>30000</TimeoutMillis>
+          <Adb Source="OpenTap.InstrumentSettings">ADB</Adb>
+          <Enabled>true</Enabled>
+          <Name>adb shell dumpsys wifi</Name>
+          <ChildTestSteps />
+          <BreakConditions>Inherit</BreakConditions>
+        </TestStep>
+      </ChildTestSteps>
+      <BreakConditions>Inherit</BreakConditions>
+    </TestStep>
+  </Steps>
+  <BreakConditions>Inherit</BreakConditions>
+  <OpenTap.Description />
+  <Package.Dependencies>
+    <Package Name="OpenTAP" Version="9.15.1+b41dd9c7" />
+  </Package.Dependencies>
+</TestPlan>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestPlan type="OpenTap.TestPlan" Locked="false">
+  <Steps>
+    <TestStep type="OpenTap.Plugins.BasicSteps.SweepLoopRange" Version="9.13.0+a5998b9e" Id="4c355863-6a91-42ac-bb3e-ef4455075fe9">
+      <SweepStart>0</SweepStart>
+      <SweepStop>15</SweepStop>
+      <SweepEnd>15</SweepEnd>
+      <SweepPoints>16</SweepPoints>
+      <SweepBehavior>Linear</SweepBehavior>
+      <SweepPropertyName>rate;MyAwesomePlugin.Scp_Driver_To_Board</SweepPropertyName>
+      <Enabled>false</Enabled>
+      <Name>Sweep Loop (Range) -&gt; rate field</Name>
+      <ChildTestSteps>
+        <TestStep type="MyAwesomePlugin.Scp_Driver_To_Board" Version="0.0.0" Id="708ba4e8-f6be-4a3c-b1bb-fb57a4cf7e5b">
+          <path>D:/test_drivers</path>
+          <rate>-1</rate>
+          <reserved>-1</reserved>
+          <length>-1</length>
+          <tail>-1</tail>
+          <Enabled>true</Enabled>
+          <Name>Send scp Command</Name>
+          <ChildTestSteps />
+          <BreakConditions>Inherit</BreakConditions>
+          <OpenTap.Description>copy sdr.ko from folder defined by length, rate, reserved and tail parameters. -1 means it uses the default value.</OpenTap.Description>
+        </TestStep>
+      </ChildTestSteps>
+      <BreakConditions>Inherit</BreakConditions>
+    </TestStep>
+    <TestStep type="MyAwesomePlugin.Scp_Driver_To_Board" Version="0.0.0" Id="96afe5ad-5f73-4dce-ab61-3875bedd44b0">
+      <path>D:/test_drivers</path>
+      <rate>-1</rate>
+      <reserved>-1</reserved>
+      <length>-1</length>
+      <tail>-1</tail>
+      <Enabled>true</Enabled>
+      <Name>Send scp Command</Name>
+      <ChildTestSteps />
+      <BreakConditions>Inherit</BreakConditions>
+      <OpenTap.Description>copy default driver to board</OpenTap.Description>
+    </TestStep>
+  </Steps>
+  <BreakConditions>Inherit</BreakConditions>
+  <OpenTap.Description />
+  <Package.Dependencies>
+    <Package Name="OpenTAP" Version="9.13.0+a5998b9e" />
+  </Package.Dependencies>
+</TestPlan>

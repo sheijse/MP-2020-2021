@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestPlan type="OpenTap.TestPlan" Locked="false">
+  <Steps>
+    <TestStep type="OpenTap.Plugins.BasicSteps.SequenceStep" Version="9.15.1+b41dd9c7" Id="676df683-dc67-44b9-9d63-6b970e2c0f96">
+      <Enabled>true</Enabled>
+      <Name>test sequence using original driver to verify correct operation</Name>
+      <ChildTestSteps>
+        <TestStep type="Tap.Plugins.UMA.Android.Steps.AdbCommandStep" Version="1.0.0" Id="d42ab53c-9a10-4f85-85d6-0871de6b1741">
+          <Command>Custom</Command>
+          <DeviceId />
+          <Arguments>devices</Arguments>
+          <LocalFile />
+          <RemoteFile />
+          <AdbInstallOptions>ReplaceExistingApplication, AllowVersionCodeDowngrade</AdbInstallOptions>
+          <Package />
+          <Retries>3</Retries>
+          <RetryWaitMillis>5000</RetryWaitMillis>
+          <TimeoutMillis>30000</TimeoutMillis>
+          <Adb Source="OpenTap.InstrumentSettings">ADB</Adb>
+          <Enabled>true</Enabled>
+          <Name>adb devices</Name>
+          <ChildTestSteps />
+          <BreakConditions>Inherit</BreakConditions>
+          <OpenTap.Description>Verify USB-debugging is enabled.</OpenTap.Description>
+        </TestStep>
+        <TestStep type="MyAwesomePlugin.Scp_Original_Driver_To_Board" Version="0.0.0" Id="e840173d-7cfb-4753-8419-0877ccd88661">
+          <path>D:/test_drivers</path>
+          <Enabled>true</Enabled>
+          <Name>Copy original openwifi driver to board</Name>
+          <ChildTestSteps />
+          <BreakConditions>Inherit</BreakConditions>
+        </TestStep>
+        <TestStep type="OpenTap.Plugins.BasicSteps.DelayStep" Version="9.15.1+b41dd9c7" Id="774e772c-ffdc-454b-8918-0b400dfcbf73">
+          <DelaySecs>1</DelaySecs>
+          <Enabled>true</Enabled>
+          <Name>Delay</Name>
+          <ChildTestSteps />
+          <BreakConditions>Inherit</BreakConditions>
+        </TestStep>
+        <TestStep type="OpenTap.Plugins.Ssh.SshCommandStep" Version="0.3.0-beta.8+7b4c999b" Id="5e885bb3-10bf-4989-8d14-0fe4c010178c">
+          <Command>sync</Command>
+          <SshResource type="emb:OpenTap.Plugins.Ssh.SshInstrument" Source="OpenTap.InstrumentSettings">Dev board</SshResource>
+          <Enabled>true</Enabled>
+          <Name>SSH Command {Command}</Name>
+          <ChildTestSteps />
+          <BreakConditions>Inherit</BreakConditions>
+        </TestStep>
+        <TestStep type="ref@OpenTap.Plugins.BasicSteps.TestPlanReference" Version="9.15.1+b41dd9c7" Id="2eb0bf4e-4638-48ba-b38a-917718b230d5">
+          <Filepath>log adb parameters.TapPlan</Filepath>
+          <StepMapping>
+            <GuidMapping>
+              <Guid1>79641591-7a6a-4cc3-9e84-1746a740ff7b</Guid1>
+              <Guid2>5fbc2bb0-896c-4742-9fc1-0ba832552ae0</Guid2>
+            </GuidMapping>
+            <GuidMapping>
+              <Guid1>d02c2a97-6a34-46b4-af0c-7022928fb7d9</Guid1>
+              <Guid2>fbbdb622-444c-4a56-9972-d01537d6557a</Guid2>
+            </GuidMapping>
+            <GuidMapping>
+              <Guid1>58884891-7485-4016-8d57-77ce7d63c9d2</Guid1>
+              <Guid2>fa82be47-ec27-4609-865f-7bdab6263f76</Guid2>
+            </GuidMapping>
+            <GuidMapping>
+              <Guid1>f32de5bf-50f3-4433-b5ee-b460c147e64d</Guid1>
+              <Guid2>47596b3e-8568-4471-85dc-d17496bb3268</Guid2>
+            </GuidMapping>
+            <GuidMapping>
+              <Guid1>d4e6aa29-9269-495d-b965-b99cb376f873</Guid1>
+              <Guid2>913b11e6-e038-4665-8cdd-15695285c2fc</Guid2>
+            </GuidMapping>
+            <GuidMapping>
+              <Guid1>13019cf7-4bb0-4e8e-bc36-0fb82f77a01f</Guid1>
+              <Guid2>35978c10-c5a7-4e6f-9938-760202976dae</Guid2>
+            </GuidMapping>
+            <GuidMapping>
+              <Guid1>062ac893-48fa-4316-9e64-620ab1315dd8</Guid1>
+              <Guid2>7f409534-1159-4387-b5c7-503367c8031a</Guid2>
+            </GuidMapping>
+            <GuidMapping>
+              <Guid1>0c53a430-63db-465a-8526-12317a2a8cdf</Guid1>
+              <Guid2>62a88f1c-36eb-4645-bc69-9a32b8704022</Guid2>
+            </GuidMapping>
+            <GuidMapping>
+              <Guid1>0b88ebd0-96b7-44c5-bea1-acba75cfae0e</Guid1>
+              <Guid2>5c91a345-1777-4a0a-b583-90d3587f65d4</Guid2>
+            </GuidMapping>
+          </StepMapping>
+          <Enabled>false</Enabled>
+          <Name>log adb parameters before setup AP</Name>
+          <BreakConditions>Inherit</BreakConditions>
+        </TestStep>
+        <TestStep type="OpenTap.Plugins.BasicSteps.ParallelStep" Version="9.15.1+b41dd9c7" Id="e4479b47-f7d8-4b71-b4d9-36fe6c73de20">
+          <Enabled>true</Enabled>
+          <Name>parallel</Name>
+          <ChildTestSteps>
+            <TestStep type="OpenTap.Plugins.Ssh.SshCommandStep" Version="0.3.0-beta.8+7b4c999b" Id="622b2c69-b648-4a67-9954-159b41d498c8">
+              <Command>
+                <Base64>fi9vcGVud2lmaS9mb3NkZW0uc2gg</Base64>
+              </Command>
+              <SshResource type="emb:OpenTap.Plugins.Ssh.SshInstrument" Source="OpenTap.InstrumentSettings">Dev board</SshResource>
+              <Enabled>true</Enabled>
+              <Name>start AP (fosdem.sh)</Name>
+              <ChildTestSteps />
+              <BreakConditions>Inherit</BreakConditions>
+            </TestStep>
+            <TestStep type="OpenTap.Plugins.BasicSteps.SequenceStep" Version="9.15.1+b41dd9c7" Id="23558542-f190-4b6c-a54c-2db72aef8fdf">
+              <Enabled>true</Enabled>
+              <Name>test sequence</Name>
+              <ChildTestSteps>
+                <TestStep type="OpenTap.Plugins.Ssh.SshCommandStep" Version="0.3.0-beta.8+7b4c999b" Id="c4f2999c-6f1f-4545-a7f5-899b18311e1c">
+                  <Command>cat /proc/interrupts</Command>
+                  <SshResource type="emb:OpenTap.Plugins.Ssh.SshInstrument" Source="OpenTap.InstrumentSettings">Dev board</SshResource>
+                  <Enabled>true</Enabled>
+                  <Name>SSH Command {Command}  (1)</Name>
+                  <ChildTestSteps />
+                  <BreakConditions>Inherit</BreakConditions>
+                </TestStep>
+                <TestStep type="OpenTap.Plugins.BasicSteps.DelayStep" Version="9.15.1+b41dd9c7" Id="be74be7f-85f6-45e5-8adf-98bfcdd048e5">
+                  <DelaySecs>15</DelaySecs>
+                  <Enabled>true</Enabled>
+                  <Name>Delay to make sure AP is broadcasting</Name>
+                  <ChildTestSteps />
+                  <BreakConditions>Inherit</BreakConditions>
+                </TestStep>
+                <TestStep type="Tap.Plugins.UMA.Android.Steps.AdbCommandStep" Version="1.0.0" Id="f08f7709-f333-4e12-88e3-c3abf03637da">
+                  <Command>Custom</Command>
+                  <DeviceId />
+                  <Arguments>shell svc wifi enable</Arguments>
+                  <LocalFile />
+                  <RemoteFile />
+                  <AdbInstallOptions>ReplaceExistingApplication, AllowVersionCodeDowngrade</AdbInstallOptions>
+                  <Package />
+                  <Retries>3</Retries>
+                  <RetryWaitMillis>5000</RetryWaitMillis>
+                  <TimeoutMillis>30000</TimeoutMillis>
+                  <Adb Source="OpenTap.InstrumentSettings">ADB</Adb>
+                  <Enabled>false</Enabled>
+                  <Name>enable wifi</Name>
+                  <ChildTestSteps />
+                  <BreakConditions>Inherit</BreakConditions>
+                </TestStep>
+                <TestStep type="Tap.Plugins.UMA.Android.Steps.AdbCommandStep" Version="1.0.0" Id="00f9e8e1-de93-4574-a4f3-e5f5de0798f5">
+                  <Command>Custom</Command>
+                  <DeviceId />
+                  <Arguments>shell am start -n com.steinwurf.adbjoinwifi/.MainActivity -e ssid openwifi</Arguments>
+                  <LocalFile />
+                  <RemoteFile />
+                  <AdbInstallOptions>ReplaceExistingApplication, AllowVersionCodeDowngrade</AdbInstallOptions>
+                  <Package />
+                  <Retries>3</Retries>
+                  <RetryWaitMillis>5000</RetryWaitMillis>
+                  <TimeoutMillis>30000</TimeoutMillis>
+                  <Adb Source="OpenTap.InstrumentSettings">ADB</Adb>
+                  <Enabled>false</Enabled>
+                  <Name>connect to AP using app</Name>
+                  <ChildTestSteps />
+                  <BreakConditions>Inherit</BreakConditions>
+                </TestStep>
+                <TestStep type="OpenTap.Plugins.Ssh.SshCommandStep" Version="0.3.0-beta.8+7b4c999b" Id="b656ef81-c544-4e70-ab27-c72d82b41f84">
+                  <Command>cat /proc/interrupts</Command>
+                  <SshResource type="emb:OpenTap.Plugins.Ssh.SshInstrument" Source="OpenTap.InstrumentSettings">Dev board</SshResource>
+                  <Enabled>true</Enabled>
+                  <Name>SSH Command {Command}  (2)</Name>
+                  <ChildTestSteps />
+                  <BreakConditions>Inherit</BreakConditions>
+                </TestStep>
+                <TestStep type="OpenTap.Plugins.BasicSteps.DelayStep" Version="9.15.1+b41dd9c7" Id="ca21ed86-b20f-4007-8435-85a843443773">
+                  <DelaySecs>25</DelaySecs>
+                  <Enabled>true</Enabled>
+                  <Name>Delay to give device time to connect to AP</Name>
+                  <ChildTestSteps />
+                  <BreakConditions>Inherit</BreakConditions>
+                </TestStep>
+                <TestStep type="OpenTap.Plugins.Ssh.SshCommandStep" Version="0.3.0-beta.8+7b4c999b" Id="4b3b3e20-5259-4d02-96bb-054a00434f68">
+                  <Command>cat /proc/interrupts</Command>
+                  <SshResource type="emb:OpenTap.Plugins.Ssh.SshInstrument" Source="OpenTap.InstrumentSettings">Dev board</SshResource>
+                  <Enabled>true</Enabled>
+                  <Name>SSH Command {Command}  (3)</Name>
+                  <ChildTestSteps />
+                  <BreakConditions>Inherit</BreakConditions>
+                </TestStep>
+                <TestStep type="ref@OpenTap.Plugins.BasicSteps.TestPlanReference" Version="9.15.1+b41dd9c7" Id="1fd34b12-56ba-463b-a6a0-21416b601bd9">
+                  <Filepath>log adb parameters.TapPlan</Filepath>
+                  <StepMapping>
+                    <GuidMapping>
+                      <Guid1>79641591-7a6a-4cc3-9e84-1746a740ff7b</Guid1>
+                      <Guid2>7f560a1c-b387-4c5a-acc2-33e9380c9fca</Guid2>
+                    </GuidMapping>
+                    <GuidMapping>
+                      <Guid1>d02c2a97-6a34-46b4-af0c-7022928fb7d9</Guid1>
+                      <Guid2>c71f1256-754c-4db1-9637-b6c2e9214456</Guid2>
+                    </GuidMapping>
+                    <GuidMapping>
+                      <Guid1>58884891-7485-4016-8d57-77ce7d63c9d2</Guid1>
+                      <Guid2>d15e6dd8-248a-4efc-aae5-edcbae9e1430</Guid2>
+                    </GuidMapping>
+                    <GuidMapping>
+                      <Guid1>f32de5bf-50f3-4433-b5ee-b460c147e64d</Guid1>
+                      <Guid2>e368a7fe-bf7e-4b8d-ad39-6973bb5c602b</Guid2>
+                    </GuidMapping>
+                    <GuidMapping>
+                      <Guid1>d4e6aa29-9269-495d-b965-b99cb376f873</Guid1>
+                      <Guid2>6244d2df-9915-46dd-90be-5c140ddf566b</Guid2>
+                    </GuidMapping>
+                    <GuidMapping>
+                      <Guid1>13019cf7-4bb0-4e8e-bc36-0fb82f77a01f</Guid1>
+                      <Guid2>15632933-b8ba-4c23-b2e1-9b1dc18afea4</Guid2>
+                    </GuidMapping>
+                    <GuidMapping>
+                      <Guid1>062ac893-48fa-4316-9e64-620ab1315dd8</Guid1>
+                      <Guid2>ae8917fd-f097-4836-b741-2b6676c0f00d</Guid2>
+                    </GuidMapping>
+                    <GuidMapping>
+                      <Guid1>0c53a430-63db-465a-8526-12317a2a8cdf</Guid1>
+                      <Guid2>9905dac0-7885-41d0-8714-c4e7c68434cd</Guid2>
+                    </GuidMapping>
+                    <GuidMapping>
+                      <Guid1>0b88ebd0-96b7-44c5-bea1-acba75cfae0e</Guid1>
+                      <Guid2>c27419ac-9b67-4e85-9c86-b9c2f6e5b1f7</Guid2>
+                    </GuidMapping>
+                  </StepMapping>
+                  <Enabled>true</Enabled>
+                  <Name>log adb parameters</Name>
+                  <BreakConditions>Inherit</BreakConditions>
+                </TestStep>
+                <TestStep type="OpenTap.Plugins.Ssh.SshCommandStep" Version="0.3.0-beta.8+7b4c999b" Id="46359b58-e8b4-4e26-984b-349d4ed6dc70">
+                  <Command>cat /proc/interrupts</Command>
+                  <SshResource type="emb:OpenTap.Plugins.Ssh.SshInstrument" Source="OpenTap.InstrumentSettings">Dev board</SshResource>
+                  <Enabled>true</Enabled>
+                  <Name>SSH Command {Command}  (4)</Name>
+                  <ChildTestSteps />
+                  <BreakConditions>Inherit</BreakConditions>
+                </TestStep>
+                <TestStep type="OpenTap.Plugins.Ssh.SshCommandStep" Version="0.3.0-beta.8+7b4c999b" Id="c8824457-7675-4ef7-a722-c18451954af0">
+                  <Command>killall webfsd</Command>
+                  <SshResource type="emb:OpenTap.Plugins.Ssh.SshInstrument" Source="OpenTap.InstrumentSettings">Dev board</SshResource>
+                  <Enabled>false</Enabled>
+                  <Name>
+                    <Base64>U1NIIENvbW1hbmQge0NvbW1hbmR9IA==</Base64>
+                  </Name>
+                  <ChildTestSteps />
+                  <BreakConditions>Inherit</BreakConditions>
+                  <OpenTap.Description>stops the AP</OpenTap.Description>
+                </TestStep>
+                <TestStep type="OpenTap.Plugins.Ssh.SshCommandStep" Version="0.3.0-beta.8+7b4c999b" Id="cfde88fe-b3f7-4730-b774-26a13638be78">
+                  <Command>killall hostapd</Command>
+                  <SshResource type="emb:OpenTap.Plugins.Ssh.SshInstrument" Source="OpenTap.InstrumentSettings">Dev board</SshResource>
+                  <Enabled>true</Enabled>
+                  <Name>SSH Command {Command}</Name>
+                  <ChildTestSteps />
+                  <BreakConditions>Inherit</BreakConditions>
+                  <OpenTap.Description>stops the AP</OpenTap.Description>
+                </TestStep>
+              </ChildTestSteps>
+              <BreakConditions>Inherit</BreakConditions>
+            </TestStep>
+          </ChildTestSteps>
+          <BreakConditions>Inherit</BreakConditions>
+          <OpenTap.Description>Parallel to keep AP running and test at the same time</OpenTap.Description>
+        </TestStep>
+        <TestStep type="Tap.Plugins.UMA.Android.Steps.AdbCommandStep" Version="1.0.0" Id="62715ccd-879b-47ae-8654-b112c7650ad9">
+          <Command>Custom</Command>
+          <DeviceId />
+          <Arguments>shell dumpsys wifi</Arguments>
+          <LocalFile />
+          <RemoteFile />
+          <AdbInstallOptions>ReplaceExistingApplication, AllowVersionCodeDowngrade</AdbInstallOptions>
+          <Package />
+          <Retries>3</Retries>
+          <RetryWaitMillis>5000</RetryWaitMillis>
+          <TimeoutMillis>30000</TimeoutMillis>
+          <Adb Source="OpenTap.InstrumentSettings">ADB</Adb>
+          <Enabled>true</Enabled>
+          <Name>adb shell dumpsys wifi (1)</Name>
+          <ChildTestSteps />
+          <BreakConditions>Inherit</BreakConditions>
+        </TestStep>
+        <TestStep type="Tap.Plugins.UMA.Android.Steps.AdbCommandStep" Version="1.0.0" Id="d35535e0-39ee-4b35-80ef-416cb31a0ddd">
+          <Command>Custom</Command>
+          <DeviceId />
+          <Arguments>shell ping -c1 192.168.13.1</Arguments>
+          <LocalFile />
+          <RemoteFile />
+          <AdbInstallOptions>ReplaceExistingApplication, AllowVersionCodeDowngrade</AdbInstallOptions>
+          <Package />
+          <Retries>1</Retries>
+          <RetryWaitMillis>1000</RetryWaitMillis>
+          <TimeoutMillis>15000</TimeoutMillis>
+          <Adb Source="OpenTap.InstrumentSettings">ADB</Adb>
+          <Enabled>true</Enabled>
+          <Name>ping to verify disconnect</Name>
+          <ChildTestSteps />
+          <BreakConditions>Inherit</BreakConditions>
+        </TestStep>
+      </ChildTestSteps>
+      <BreakConditions>Inherit</BreakConditions>
+    </TestStep>
+  </Steps>
+  <BreakConditions>Inherit</BreakConditions>
+  <OpenTap.Description />
+  <Package.Dependencies>
+    <Package Name="OpenTAP" Version="9.15.1+b41dd9c7" />
+  </Package.Dependencies>
+</TestPlan>
