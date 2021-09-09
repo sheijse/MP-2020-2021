@@ -15,8 +15,8 @@ The 'opentap' directory contains 2 subdirectories:
 To use the teststeps you have to .cs files in a project as mentioned in the guide and run it using Visual Studio.   
 When it fails a dll file will be created in the \bin\Debug subdirectory. This dll needs to be placed in the root directory of OpenTAP.  
 
-The 'test header byte values' contains a 'main.cpp' file used to test the generation header byte values with the custom inputs.
-beware: Bytes visible in the output are in Little-endian, thus the MSB of each byte is the last one.
+The 'test header byte values' contains a 'main.cpp' file used to test the generation header byte values with the custom inputs.  
+Beware: Bytes visible in the output are in Little-endian, thus the MSB of each byte is the last one.
 
 The info directory contains:
 - pdf of submitted thesis and defense presentation
