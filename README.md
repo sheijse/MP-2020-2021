@@ -22,7 +22,6 @@ The info directory contains:
 - pdf of submitted thesis and defense presentation
 - txt files with used linux commands
 
-usefull urls:
 most updated version of the thesis    
 https://www.overleaf.com/read/jdxcrsqmmzzx  
 
