@@ -6,7 +6,7 @@ the 'generating drivers' directory contains all files used to generate and compi
     path_wr: the sdr.c file that can be compiled using "$OPENWIFI_DIR/driver/make_all.sh $OPENWIFI_DIR $XILINX_DIR 32"  
 - sdr-original.c:
     template sdr.c file
-- 
+- the 2 .sh files are used to use loops to generate change and compile each individual driver
 
 the info directory contains:
 - pdf of submitted thesis
