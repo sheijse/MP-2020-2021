@@ -3,6 +3,17 @@
 Created on Sat May  8 14:56:52 2021
 
 @author: Steven
+
+This file remakes the sdr.c file given in path_wr by reading the template sdr.c and changing the field values
+
+//KEYWORD
+rate = SIG_RATE;	//0x00 to 0x0f or 0 to 15
+reserved = 0x00;	//0x10 or 0x00
+length = l_len;		//0 to 0xFFF
+tail = 0x00;		//0 to 63 or 0x0 to 0x3f
+rate_changed = 0;
+//END_KEYWORD
+
 """
 #replacing in the same file or making new file:
 #https://pythonexamples.org/python-replace-string-in-file/
@@ -20,7 +31,6 @@ def auto_int(x):
 # use type = lambda x: int(x,0) if u don't want to use this function
 
 parser = argparse.ArgumentParser(description='input parameters Openwifi change sdr.c')
-
 
 # allows decimal input, hex input (0xff) and binary input (0b1010)
 
