@@ -10,14 +10,16 @@ Created on Sat May  8 14:56:52 2021
 import sys
 import argparse
 
+# function that can be used to mirror a byte
 def mirror_byte(b):
     return int('{:08b}'.format(b)[::-1], 2)
 
+# should allow for bin, hex and dec inputs
 def auto_int(x):
         return int(x, 0)
 # use type = lambda x: int(x,0) if u don't want to use this function
 
-parser = argparse.ArgumentParser(description='input parameters Map art')
+parser = argparse.ArgumentParser(description='input parameters Openwifi change sdr.c')
 
 
 # allows decimal input, hex input (0xff) and binary input (0b1010)
