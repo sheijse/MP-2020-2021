@@ -1,0 +1,193 @@
+
+https://ubuntu.com/server/docs/network-configuration
+
+check status:
+ifconfig
+ip address show dev enp0s25
+ip route show
+
+---
+
+Temporary IP Address Assignment:
+sudo ip addr add 192.168.10.1/24 dev enp0s25
+
+log into board:
+ssh root@192.168.10.122
+
+	ww: openwifi
+	
+on board webserver (on board):
+
+~/openwifi/fosdem.sh 
+~/openwifi/fosdem-11ag.sh (dont know if i have to run both)
+
+To give the Wi-Fii client internet access, configure routing/NAT (on the PC):
+
+sudo sysctl -w net.ipv4.ip_forward=1
+sudo iptables -t nat -A POSTROUTING -o ethY -j MASQUERADE
+sudo ip route add 192.168.13.0/24 via 192.168.10.122 dev ethX
+
+ethX = enp0s25, ethY = wlo1
+
+sudo sysctl -w net.ipv4.ip_forward=1
+sudo iptables -t nat -A POSTROUTING -o wlo1 -j MASQUERADE
+sudo ip route add 192.168.13.0/24 via 192.168.10.122 dev enp0s25
+
+---
+changing frequency band (on board):
+cd openwifi
+nano hostapd-openwifi-11ag.conf (nano to edit the file)
+
+hw_mode=a -> g
+channel=44 -> 11
+
+~/openwifi/fosdem-11ag.sh (do this to pick the new config)
+
+---
+
+check OS version
+cat /etc/*release
+
+---
+opening wireshark
+terminal: wireshark
+
+https://linuxhint.com/capture_wi-fi_traffic_using_wireshark/
+-----
+opening spyder3
+terminal: spyder3
+
+boofuzz always run in virtuql env:
+https://boofuzz.readthedocs.io/en/stable/user/install.html?fbclid=IwAR3l0Fsp2DUhFPJXkOLnkLceam_YM5HgMrhy3xGsdWgeYMCsxY5Q3w2Xmys
+
+--------
+
+nano -> editor
+cd 		-> chqnge directory
+ls		-> show all files
+
+sudo apt-get install ...
+
+----------
+
+pqcket injection
+https://github.com/open-sdr/openwifi/blob/master/doc/app_notes/inject_80211.md?fbclid=IwAR3nRDjS8_zg7PXtWQjvrEPtRzKrQgopudyiseBf25yb4FmnYl21n8Ops3I
+
+
+---------
+
+clone to openwifi git:
+git clone https://github.com/open-sdr/openwifi.git
+
+
+xilinx dir:
+/tools/Xilinx/Vivado/2018.3/bin/vivado
+
+openwifi dir:
+openwifi-master
+
+export OPENWIFI_DIR=/home/openwifi/openwifi
+export XILINX_DIR=/tools/Xilinx
+
+gcc 9 instead of 10.2
+gcc --version
+git reset -- hard
+git clean -d -x -f
+
+&> test.txt
+echo $VAR
+
+-----------------------------
+sudo ip addr add 192.168.10.1/24 dev enp0s25
+ssh root@192.168.10.122
+
+export OPENWIFI_DIR=/home/openwifi/openwifi
+export XILINX_DIR=/tools/Xilinx
+
+$OPENWIFI_DIR/user_space/prepare_kernel.sh $OPENWIFI_DIR $XILINX_DIR 32
+$OPENWIFI_DIR/driver/make_all.sh $OPENWIFI_DIR $XILINX_DIR 32
+scp `find $OPENWIFI_DIR/driver/ -name \*.ko` root@192.168.10.122:openwifi/
+
+
+~/openwifi/fosdem.sh
+
+on board see interrupts:
+cat /proc/interrupts
+54 & 55 increase: means transmitting
+
+to see value of printk:
+sudo dmesg
+
+
+-----
+
+adb devices
+adb shell ping -c1 www.google.com
+adb shell ping -c1 192.168.10.122
+adb shell svc wifi disable
+adb shell svc wifi enable
+
+---------
+
+https://linuxhint.com/capture_wi-fi_traffic_using_wireshark/
+
+systemctl stop NetworkManager
+
+sudo ifconfig wlo1 down
+sudo iwconfig wlo1 mode monitor
+sudo ifconfig wlo1 up
+sudo iwconfig wlo1 channel 44
+
+ifconfig
+iwconfig wlo1
+
+sudo systemctl restart NetworkManager.service
+
+
+info over modes en freq:
+
+iw list
+iw phy0 info
+
+
+
+interfqce : wlo1
+
+
+systemctl stop NetworkManager
+
+change chqnnel:    (sudo wlo1 channel 44: doesnt work)
+./openwifi/user_space/monitor_ch.sh wlo1 44 (5.22 GHz)
+
+sudo systemctl restart NetworkManager.service
+
+
+
+sudo wireshark
+ip.addr == 192.168.13.1
+wlan.da == ff:ff:ff:ff:ff:ff || wlan.sa == ff:ff:ff:ff:ff:ff
+wlan.da == ff:ff:ff:ff:ff:ff && wlan.sa contains 66:55:44:33:22
+
+
+
+systemctl stop NetworkManager
+
+sudo ifconfig wlo1 down
+sudo iwconfig wlo1 mode managed
+sudo ifconfig wlo1 up
+
+sudo systemctl restart NetworkManager.service
+
+
+----
+automation:
+change sdr.c
+
+$OPENWIFI_DIR/driver/make_all.sh $OPENWIFI_DIR $XILINX_DIR 32
+scp `find $OPENWIFI_DIR/driver/ -name \*.ko` root@192.168.10.122:openwifi/
+
+~/openwifi/fosdem.sh
+
+killall hostapd    (stops the AP, not sure this is the best way)
+
+
